@@ -80,6 +80,5 @@ public class Player {
 		desiredPosition.incrementX(xChange);
 		desiredPosition.incrementZ(zChange);
 	}
-	
-	
+		
 }

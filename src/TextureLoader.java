@@ -66,15 +66,7 @@ public class TextureLoader {
 	}
 }
 
-//To use this code, do something like this:
-//
-//BufferedImage image = TextureLoader.loadImage("/res/test.png");//The path is inside the jar file
-//int textureID = TextureLoader.loadTexture(image);
-//You can either save the textureID as a final variable(if the texture never changes), or unload the texture after each render using GL11.glDeleteTextures(textureID);
-//
-//To do text, just create a BufferedImage manually, and use createGraphics() to get a graphics2D() instance for the image. Then, use drawString() to draw onto the BufferedImage, load it into the TextureLoader, render it onscreen, and unload the texture using the method above.
-//
-//That's the method that I use, and it works very well, I can get a good 60fps out of it. I hope I helped!
-//
+// To do text, just create a BufferedImage manually, and use createGraphics() to get a graphics2D() instance for the image.
+// Then, use drawString() to draw onto the BufferedImage, load it into the TextureLoader, render it onscreen, and unload the texture using the method above.
 //-Flafla2
 

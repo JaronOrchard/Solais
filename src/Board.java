@@ -158,5 +158,4 @@ public class Board {
 				 box2Bottom < box1Top);
 	}
 	
-	
 }

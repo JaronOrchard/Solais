@@ -126,25 +126,4 @@ public class Solais {
 		solais.start();
 	}
 	
-	// Still to-do:
-	
-	// - Turn visible/solid/breakable into enums
-	// - GitHub
-	// - Cull backsides / efficient rendering
-	// - Wandering entity
-	// - Following entity
-	// - Utilize mouse input
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
