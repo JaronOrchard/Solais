@@ -27,7 +27,7 @@ public class Solais {
 		}
 		
 		initializeOpenGL();
-		initializeTextures();
+		Textures.initializeTextures();
 		initializeGame();
 		
 		lastFPS = getTime();
@@ -109,11 +109,6 @@ public class Solais {
 		//glDisable(GL_LIGHTING);
 		//glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 		
-	}
-	
-	private void initializeTextures() {
-		TextureLoader.loadTexture(Textures.HALLWAYTEST_TEXTURE, TextureLoader.loadImage(Textures.HALLWAYTEST_RESOURCE));
-		TextureLoader.loadTexture(Textures.HALLWAYTEST_GRATE_TEXTURE, TextureLoader.loadImage(Textures.HALLWAYTEST_GRATE_RESOURCE));
 	}
 	
 	private void initializeGame() {

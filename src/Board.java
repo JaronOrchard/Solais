@@ -21,19 +21,19 @@ public class Board {
 		}
 		createOuterWalls();
 		
-		cells[20][6] = new Cell(Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, floorColor, ceilingColor, true, true, false);
-		cells[19][6] = new Cell(Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, floorColor, ceilingColor, true, true, false);
-		cells[18][6] = new Cell(Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, floorColor, ceilingColor, true, true, false);
-		cells[17][6] = new Cell(Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, floorColor, ceilingColor, true, true, false);
-		cells[16][6] = new Cell(Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, floorColor, ceilingColor, true, true, false);
-		cells[15][8] = new Cell(Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, floorColor, ceilingColor, true, true, false);
-		cells[15][7] = new Cell(Textures.HALLWAYTEST_GRATE_TEXTURE, Textures.HALLWAYTEST_GRATE_TEXTURE, Textures.HALLWAYTEST_GRATE_TEXTURE, Textures.HALLWAYTEST_GRATE_TEXTURE, floorColor, ceilingColor, true, true, false);
-		cells[15][6] = new Cell(Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, floorColor, ceilingColor, true, true, false);
-		cells[14][6] = new Cell(Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, floorColor, ceilingColor, true, true, false);
-		cells[13][6] = new Cell(Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, floorColor, ceilingColor, true, true, false);
-		cells[12][6] = new Cell(Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, floorColor, ceilingColor, true, true, false);
-		cells[11][6] = new Cell(Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, Textures.HALLWAYTEST_TEXTURE, floorColor, ceilingColor, true, true, false);
-		cells[10][6] = new Cell(Textures.HALLWAYTEST_GRATE_TEXTURE, Textures.HALLWAYTEST_GRATE_TEXTURE, Textures.HALLWAYTEST_GRATE_TEXTURE, Textures.HALLWAYTEST_GRATE_TEXTURE, floorColor, ceilingColor, true, true, false);
+		cells[20][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
+		cells[19][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
+		cells[18][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
+		cells[17][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
+		cells[16][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
+		cells[15][8] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
+		cells[15][7] = new Cell(Textures.HALLWAYTEST_GRATE, Textures.HALLWAYTEST_GRATE, Textures.HALLWAYTEST_GRATE, Textures.HALLWAYTEST_GRATE, floorColor, ceilingColor, true, true, false);
+		cells[15][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
+		cells[14][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
+		cells[13][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
+		cells[12][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
+		cells[11][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
+		cells[10][6] = new Cell(Textures.HALLWAYTEST_GRATE, Textures.HALLWAYTEST_GRATE, Textures.HALLWAYTEST_GRATE, Textures.HALLWAYTEST_GRATE, floorColor, ceilingColor, true, true, false);
 		
 	}
 	
@@ -44,12 +44,12 @@ public class Board {
 		
 		
 		for (int x = 0; x < NUM_CELLS; x++) {
-			cells[x][0] = new Cell(0, 0, Textures.HALLWAYTEST_TEXTURE, 0, floorColor, ceilingColor, true, true, false);
-			cells[x][NUM_CELLS-1] = new Cell(Textures.HALLWAYTEST_TEXTURE, 0, 0, 0, floorColor, ceilingColor, true, true, false);
+			cells[x][0] = new Cell(0, 0, Textures.STONE_WALL, 0, floorColor, ceilingColor, true, true, false);
+			cells[x][NUM_CELLS-1] = new Cell(Textures.STONE_WALL, 0, 0, 0, floorColor, ceilingColor, true, true, false);
 		}
 		for (int z = 0; z < NUM_CELLS; z++) {
-			cells[0][z] = new Cell(0, Textures.HALLWAYTEST_TEXTURE, 0, 0, floorColor, ceilingColor, true, true, false);
-			cells[NUM_CELLS-1][z] = new Cell(0, 0, 0, Textures.HALLWAYTEST_TEXTURE, floorColor, ceilingColor, true, true, false);
+			cells[0][z] = new Cell(0, Textures.STONE_WALL, 0, 0, floorColor, ceilingColor, true, true, false);
+			cells[NUM_CELLS-1][z] = new Cell(0, 0, 0, Textures.STONE_WALL, floorColor, ceilingColor, true, true, false);
 		}
 	}
 	
