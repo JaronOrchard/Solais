@@ -112,8 +112,8 @@ public class Solais {
 	}
 	
 	private void initializeGame() {
-		player = new Player("Player", new Coordinate(1.5f, 0.5f, 1.5f), 135-45);
-		board = new Board();
+		player = new Player("Player", new Coordinate(5.5f, 0.5f, 3.5f), 90);
+		board = BoardBuilder.buildLevel01();
 	}
 	
 	public static void main(String[] argv) {

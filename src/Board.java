@@ -3,54 +3,13 @@
 public class Board {
 	
 	private static final int NUM_CELLS = 64; // Number of cells on a side of the board
-	
+	public int getNumCells() { return NUM_CELLS; }
+		
 	private Cell[][] cells;
+	public Cell[][] getCells() { return cells; }
 	
 	public Board() {
-		
-		
-		Color floorColor = new Color(108, 81, 60); // temporary
-		Color altFloorColor = new Color(123, 96, 75); // temporary
-		Color ceilingColor = new Color(117, 111, 75); // temporary
-		
-		cells = new Cell[128][128];
-		for (int x = 0; x < NUM_CELLS; x++) {
-			for (int z = 0; z < NUM_CELLS; z++) {
-				cells[x][z] = new Cell(0, 0, 0, 0, ((x + z) % 2 == 1 ? floorColor : altFloorColor), ceilingColor, false, false, false);
-			}
-		}
-		createOuterWalls();
-		
-		cells[20][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
-		cells[19][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
-		cells[18][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
-		cells[17][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
-		cells[16][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
-		cells[15][8] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
-		cells[15][7] = new Cell(Textures.HALLWAYTEST_GRATE, Textures.HALLWAYTEST_GRATE, Textures.HALLWAYTEST_GRATE, Textures.HALLWAYTEST_GRATE, floorColor, ceilingColor, true, true, false);
-		cells[15][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
-		cells[14][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
-		cells[13][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
-		cells[12][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
-		cells[11][6] = new Cell(Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, Textures.HALLWAYTEST, floorColor, ceilingColor, true, true, false);
-		cells[10][6] = new Cell(Textures.HALLWAYTEST_GRATE, Textures.HALLWAYTEST_GRATE, Textures.HALLWAYTEST_GRATE, Textures.HALLWAYTEST_GRATE, floorColor, ceilingColor, true, true, false);
-		
-	}
-	
-	private void createOuterWalls() {
-		
-		Color floorColor = new Color(108, 81, 60); // temporary
-		Color ceilingColor = new Color(117, 111, 75); // temporary
-		
-		
-		for (int x = 0; x < NUM_CELLS; x++) {
-			cells[x][0] = new Cell(0, 0, Textures.STONE_WALL, 0, floorColor, ceilingColor, true, true, false);
-			cells[x][NUM_CELLS-1] = new Cell(Textures.STONE_WALL, 0, 0, 0, floorColor, ceilingColor, true, true, false);
-		}
-		for (int z = 0; z < NUM_CELLS; z++) {
-			cells[0][z] = new Cell(0, Textures.STONE_WALL, 0, 0, floorColor, ceilingColor, true, true, false);
-			cells[NUM_CELLS-1][z] = new Cell(0, 0, 0, Textures.STONE_WALL, floorColor, ceilingColor, true, true, false);
-		}
+		cells = new Cell[NUM_CELLS][NUM_CELLS];
 	}
 	
 	/**
