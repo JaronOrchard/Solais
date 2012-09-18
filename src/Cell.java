@@ -89,13 +89,13 @@ public class Cell {
 			glBindTexture(GL_TEXTURE_2D, this.northWallTexture);
 			glBegin(GL_QUADS);
 				glTexCoord2d(0,0); 
-				glVertex3f(0f, 1f, 0f);
-				glTexCoord2d(1,0);
 				glVertex3f(1f, 1f, 0f);
+				glTexCoord2d(1,0);
+				glVertex3f(0f, 1f, 0f);
 				glTexCoord2d(1,1); 
-				glVertex3f(1f, 0f, 0f);
-				glTexCoord2d(0,1); 
 				glVertex3f(0f, 0f, 0f);
+				glTexCoord2d(0,1); 
+				glVertex3f(1f, 0f, 0f);
 			glEnd();
 		glPopMatrix();
 	}
@@ -109,13 +109,13 @@ public class Cell {
 			glBindTexture(GL_TEXTURE_2D, this.eastWallTexture);
 			glBegin(GL_QUADS);
 				glTexCoord2d(0,0); 
-				glVertex3f(0f, 1f, 0f);
-				glTexCoord2d(1,0);
 				glVertex3f(1f, 1f, 0f);
+				glTexCoord2d(1,0);
+				glVertex3f(0f, 1f, 0f);
 				glTexCoord2d(1,1); 
-				glVertex3f(1f, 0f, 0f);
-				glTexCoord2d(0,1); 
 				glVertex3f(0f, 0f, 0f);
+				glTexCoord2d(0,1); 
+				glVertex3f(1f, 0f, 0f);
 			glEnd();
 		glPopMatrix();
 	}
@@ -129,13 +129,13 @@ public class Cell {
 			glBindTexture(GL_TEXTURE_2D, this.southWallTexture);
 			glBegin(GL_QUADS);
 				glTexCoord2d(0,0); 
-				glVertex3f(0f, 1f, 0f);
-				glTexCoord2d(1,0);
 				glVertex3f(1f, 1f, 0f);
+				glTexCoord2d(1,0);
+				glVertex3f(0f, 1f, 0f);
 				glTexCoord2d(1,1); 
-				glVertex3f(1f, 0f, 0f);
-				glTexCoord2d(0,1); 
 				glVertex3f(0f, 0f, 0f);
+				glTexCoord2d(0,1); 
+				glVertex3f(1f, 0f, 0f);
 			glEnd();
 		glPopMatrix();
 	}
@@ -149,13 +149,13 @@ public class Cell {
 			glBindTexture(GL_TEXTURE_2D, this.westWallTexture);
 			glBegin(GL_QUADS);
 				glTexCoord2d(0,0); 
-				glVertex3f(0f, 1f, 0f);
-				glTexCoord2d(1,0);
 				glVertex3f(1f, 1f, 0f);
+				glTexCoord2d(1,0);
+				glVertex3f(0f, 1f, 0f);
 				glTexCoord2d(1,1); 
-				glVertex3f(1f, 0f, 0f);
-				glTexCoord2d(0,1); 
 				glVertex3f(0f, 0f, 0f);
+				glTexCoord2d(0,1); 
+				glVertex3f(1f, 0f, 0f);
 			glEnd();
 		glPopMatrix();
 	}
