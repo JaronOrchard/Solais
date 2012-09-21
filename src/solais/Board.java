@@ -1,6 +1,16 @@
+package solais;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import doodads.Doodad;
+
 
 
 public class Board {
+	
+	private static final float PI = 3.1415926535f;
+	private static final float DEG_TO_RAD = PI / 180f;
 	
 	private static final int NUM_CELLS = 64; // Number of cells on a side of the board
 	public int getNumCells() { return NUM_CELLS; }
@@ -8,8 +18,12 @@ public class Board {
 	private Cell[][] cells;
 	public Cell[][] getCells() { return cells; }
 	
+	private List<Doodad> doodads;
+	public List<Doodad> getDoodads() { return doodads; }
+	
 	public Board() {
 		cells = new Cell[NUM_CELLS][NUM_CELLS];
+		doodads = new ArrayList<Doodad>();
 	}
 	
 	/**
@@ -22,8 +36,23 @@ public class Board {
 				cells[x][z].draw(x, z);
 			}
 		}
-		
-		
+		for (Doodad d : doodads) {
+			d.draw();
+		}
+	}
+	
+	/**
+	 * Activates the Doodad at the cell one space away from the player.  Called when the space bar is hit.
+	 * @param player The player (used to get the player's location)
+	 */
+	public void activateDoodad(Player player) {
+		int cellX = (int)(Math.cos((player.getAngle() - 90f) * DEG_TO_RAD) + player.getPosition().getX());
+		int cellZ = (int)(Math.sin((player.getAngle() - 90f) * DEG_TO_RAD) + player.getPosition().getZ());
+		for (Doodad d : doodads) {
+			if (d.getCellX() == cellX && d.getCellZ() == cellZ) {
+				d.activate();
+			}
+		}
 	}
 	
 	/**
@@ -98,6 +127,15 @@ public class Board {
 			if (boundingBoxesIntersect(movementBoxLeft, movementBoxRight, movementBoxTop, movementBoxBottom,
 									   (float)(entityCellX+1) - 0.1f, (float)(entityCellX+1) + 1.1f, (float)(entityCellZ+1) - 0.1f, (float)(entityCellZ+1) + 1.1f))
 				return from;
+		}
+		
+		// Also go through all solid Doodads and see if the entity collided with any of them.
+		for (Doodad d : doodads) {
+			if (d.isSolid()) {
+				if (boundingBoxesIntersect(movementBoxLeft, movementBoxRight, movementBoxTop, movementBoxBottom,
+										(float)(d.getCellX()) - 0.1f, (float)(d.getCellX()) + 1.1f, (float)(d.getCellZ()) - 0.1f, (float)(d.getCellZ()) + 1.1f))
+					return from;
+			}
 		}
 		
 		// Additionally -- don't ever let the entity leave the boundary of the board:

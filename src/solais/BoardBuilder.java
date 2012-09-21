@@ -1,3 +1,6 @@
+package solais;
+
+import doodads.Door;
 
 public class BoardBuilder {
 	
@@ -168,7 +171,7 @@ public class BoardBuilder {
 		board.getCells()[20][22] = new Cell(Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, floorColor, ceilingColor, true, true, false);
 		board.getCells()[21][22] = new Cell(Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, floorColor, ceilingColor, true, true, false);
 		board.getCells()[22][22] = new Cell(Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, floorColor, ceilingColor, true, true, false);
-		board.getCells()[22][21] = new Cell(Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, floorColor, ceilingColor, true, false, false);
+		board.getCells()[22][21] = new Cell(Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, floorColor, ceilingColor, true, true, false);
 		board.getCells()[22][20] = new Cell(Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, floorColor, ceilingColor, true, true, false);
 		board.getCells()[22][19] = new Cell(Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, floorColor, ceilingColor, true, true, false);
 		board.getCells()[23][19] = new Cell(Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, floorColor, ceilingColor, true, true, false);
@@ -221,6 +224,12 @@ public class BoardBuilder {
 		board.getCells()[13][17] = new Cell(Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, floorColor, ceilingColor, true, true, false);
 		board.getCells()[12][23] = new Cell(Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, Textures.UNDER_CONSTRUCTION, floorColor, ceilingColor, true, true, false);
 		
+		
+		board.getDoodads().add(new Door(16, 3, true, false));
+		board.getDoodads().add(new Door(3, 6, true, true));
+		board.getDoodads().add(new Door(29, 6, true, true));
+		board.getDoodads().add(new Door(5, 20, true, false));
+		board.getDoodads().add(new Door(18, 20, true, false));
 		
 		
 		return board;

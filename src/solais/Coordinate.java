@@ -1,3 +1,4 @@
+package solais;
 
 public class Coordinate {
 	

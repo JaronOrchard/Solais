@@ -1,3 +1,4 @@
+package solais;
 import java.io.InputStream;
 
 public class Textures {

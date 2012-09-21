@@ -1,3 +1,4 @@
+package solais;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;

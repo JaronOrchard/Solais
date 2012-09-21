@@ -1,3 +1,4 @@
+package solais;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
@@ -79,6 +80,14 @@ public class Solais {
 		if (Keyboard.isKeyDown(Keyboard.KEY_DOWN) || Keyboard.isKeyDown(Keyboard.KEY_S)) { player.moveBackward(); }
 		if (Keyboard.isKeyDown(Keyboard.KEY_A)) { player.strafeLeft(); }
 		if (Keyboard.isKeyDown(Keyboard.KEY_D)) { player.strafeRight(); }
+		
+		while (Keyboard.next()) {
+			if (Keyboard.getEventKeyState()) { // Key was pressed (not released)
+				if (Keyboard.getEventKey() == Keyboard.KEY_SPACE) {
+					board.activateDoodad(player);
+				}
+			}
+		}
 	}
 	
 	private void initializeOpenGL() {

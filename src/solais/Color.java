@@ -1,3 +1,4 @@
+package solais;
 
 /**
  * Constructs a Color instance that has awesome memory savings because it only uses one int!
