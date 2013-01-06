@@ -1,4 +1,7 @@
 package solais;
+import java.nio.FloatBuffer;
+
+import org.lwjgl.BufferUtils;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
@@ -11,7 +14,7 @@ public class Solais {
 	
 	private static final int WINDOW_WIDTH = 900;
 	private static final int WINDOW_HEIGHT = 600;
-	private static final String SOLAIS_WINDOW_TITLE = "Solais (v0.1)";
+	private static final String SOLAIS_WINDOW_TITLE = "Solais (Alpha version)";
 	private static final int maxFPS = 100;
 	
 	private Board board;
@@ -105,6 +108,15 @@ public class Solais {
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LEQUAL);
 		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+		
+		// Fog, found from http://content.gpwiki.org/index.php/OpenGL:Tutorials:Tutorial_Framework:Light_and_Fog:
+		glEnable(GL_FOG);
+		FloatBuffer fogColor = BufferUtils.createFloatBuffer(4);
+        fogColor.put(0.0f).put(0.0f).put(0.0f).put(1.0f).flip();
+		glFog(GL_FOG_COLOR, fogColor); // Sets the fog color
+		glFogi(GL_FOG_MODE, GL_LINEAR);
+		glFogf(GL_FOG_START, 0f);
+		glFogf(GL_FOG_END, 20f);
 		
 		// This section was from my code in Dr. White's graphics class.  I have no idea if I want it?
 		
