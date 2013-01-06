@@ -8,9 +8,7 @@ public class Cell {
 	private int westWallTexture;
 	private int floorTexture;
 	private int ceilingTexture;
-	private boolean visible;
 	private boolean solid;
-	private boolean breakable;
 	
 	public int getNorthWallTexture() { return northWallTexture; }
 	public int getEastWallTexture() { return eastWallTexture; }
@@ -18,20 +16,16 @@ public class Cell {
 	public int getWestWallTexture() { return westWallTexture; }
 	public int getFloorTexture() { return floorTexture; }
 	public int getCeilingTexture() { return ceilingTexture; }
-	public boolean getVisible() { return visible; }
 	public boolean getSolid() { return solid; }
-	public boolean getBreakable() { return breakable; }
 	
-	public Cell(int nTexture, int eTexture, int sTexture, int wTexture, int fTexture, int cTexture, boolean visible, boolean solid, boolean breakable) {
+	public Cell(int nTexture, int eTexture, int sTexture, int wTexture, int fTexture, int cTexture, boolean solid) {
 		this.northWallTexture = nTexture;
 		this.eastWallTexture = eTexture;
 		this.southWallTexture = sTexture;
 		this.westWallTexture = wTexture;
 		this.floorTexture = fTexture;
 		this.ceilingTexture = cTexture;
-		this.visible = visible;
 		this.solid = solid;
-		this.breakable = breakable;
 	}
 	
 	public void draw(int x, int z) {
@@ -44,12 +38,10 @@ public class Cell {
 				drawFloor();
 				drawCeiling();
 			}	
-			if (this.visible) {
-				if (hasNorthWall()) { drawNorthWall(); }
-				if (hasEastWall()) { drawEastWall(); }
-				if (hasSouthWall()) { drawSouthWall(); }
-				if (hasWestWall()) { drawWestWall(); }
-			}
+			if (hasNorthWall()) { drawNorthWall(); }
+			if (hasEastWall()) { drawEastWall(); }
+			if (hasSouthWall()) { drawSouthWall(); }
+			if (hasWestWall()) { drawWestWall(); }
 			glDisable(GL_TEXTURE_2D);
 			
 		glPopMatrix();

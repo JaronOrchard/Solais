@@ -50,7 +50,7 @@ public class Solais {
 			
 			updateFPS(); // Uncomment to update the title bar with the FPS
 			Display.update();
-			Display.sync(maxFPS);
+			//Display.sync(maxFPS);
 		}
 
 		Display.destroy();
