@@ -30,7 +30,6 @@ public class Solais {
 			System.exit(0);
 		}
 		
-		initializeOpenGL();
 		Textures.initializeTextures();
 		initializeGame();
 		
@@ -38,6 +37,7 @@ public class Solais {
 		
 		while (!Display.isCloseRequested()) {
 			// Initialize scene:
+			initializeOpenGLFor3D();
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			glLoadIdentity();
 			player.orientCamera();
@@ -53,6 +53,10 @@ public class Solais {
 			
 			// Draw new scene:
 			board.draw(player);
+			
+			// Draw HUD:
+			initializeOpenGLFor2D();
+			HUD.draw(player);
 			
 			updateFPS(); // Uncomment to update the title bar with the FPS
 			Display.update();
@@ -102,10 +106,9 @@ public class Solais {
 		}
 	}
 	
-	private void initializeOpenGL() {
+	private void initializeOpenGLFor3D() {
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		//glOrtho(0, WINDOW_WIDTH, 0, WINDOW_HEIGHT, 1, -1); // So this applies only to 2D sections and should go away, I hear?
 		GLU.gluPerspective(60.0f, (float)WINDOW_WIDTH/(float)WINDOW_HEIGHT, 0.05f, 100f);
 		
 		glMatrixMode(GL_MODELVIEW);
@@ -139,6 +142,19 @@ public class Solais {
 		//glDisable(GL_LIGHTING);
 		//glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 		
+	}
+	
+	private void initializeOpenGLFor2D() {
+		glDisable(GL_DEPTH_TEST);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, WINDOW_WIDTH, 0, WINDOW_HEIGHT, 1, -1); // So this applies only to 2D sections and should go away, I hear?
+		
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	    glEnable(GL_BLEND);
+	    
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
 	}
 	
 	private void initializeGame() {

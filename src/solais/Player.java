@@ -15,6 +15,8 @@ public class Player {
 	private float angle;
 	private float movementSpeed;
 	private float turningSpeed;
+	private int currentHealth;
+	private int maxHealth;
 	
 	
 	public String getName() { return name; }
@@ -23,6 +25,8 @@ public class Player {
 	public float getAngle() { return angle; }
 	public float getMovementSpeed() { return movementSpeed; }
 	public float getTurningSpeed() { return turningSpeed; }
+	public int getCurrentHealth() { return currentHealth; }
+	public int getMaxHealth() { return maxHealth; }
 	
 	public Player(String name, Coordinate position, float angle) {
 		this.name = name;
@@ -31,6 +35,8 @@ public class Player {
 		this.angle = angle;
 		this.movementSpeed = DEFAULT_MOVEMENT_SPEED;
 		this.turningSpeed = DEFAULT_TURNING_SPEED;
+		this.currentHealth = 100;
+		this.maxHealth = 100;
 	}
 	
 	/**
