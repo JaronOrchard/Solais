@@ -1,5 +1,7 @@
 package solais;
 
+import entities.Boxman;
+
 public class BoardBuilder {
 	
 	public static Board buildLevel01() {
@@ -30,6 +32,7 @@ public class BoardBuilder {
 		}
 		
 		
+		board.getEntities().add(new Boxman(new Coordinate(8, 0, 8), 0));
 		
 		return board;
 	}

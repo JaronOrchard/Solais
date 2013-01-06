@@ -24,7 +24,13 @@ public class Textures {
 	// 3000s - Ceilings
 	public static final int GENERIC_CEILING = 3999;
 	
+	// 4000s - Entities
+	public static final int BOXMAN_FACE_MAD = 4001;
+	public static final int BOXMAN_FACE_HAPPY = 4002;
+	
 	public static void initializeTextures() {
+		TextureLoader.loadTexture(NONE, TextureLoader.loadImage(ClassLoader.getSystemResourceAsStream("resources/textures/Black.png")));
+				
 		TextureLoader.loadTexture(HALLWAYTEST, TextureLoader.loadImage(ClassLoader.getSystemResourceAsStream("resources/textures/HallwayTest.png")));
 		TextureLoader.loadTexture(HALLWAYTEST_GRATE, TextureLoader.loadImage(ClassLoader.getSystemResourceAsStream("resources/textures/HallwayTestGrate.png")));
 		TextureLoader.loadTexture(STONE_WALL, TextureLoader.loadImage(ClassLoader.getSystemResourceAsStream("resources/textures/StoneWall.png")));
@@ -41,6 +47,9 @@ public class Textures {
 		TextureLoader.loadTexture(GENERIC_ALT_FLOOR, TextureLoader.loadImage(ClassLoader.getSystemResourceAsStream("resources/textures/AltFloorColor.png")));
 		
 		TextureLoader.loadTexture(GENERIC_CEILING, TextureLoader.loadImage(ClassLoader.getSystemResourceAsStream("resources/textures/CeilingColor.png")));
+		
+		TextureLoader.loadTexture(BOXMAN_FACE_MAD, TextureLoader.loadImage(ClassLoader.getSystemResourceAsStream("resources/textures/BoxmanFaceMad.png")));
+		TextureLoader.loadTexture(BOXMAN_FACE_HAPPY, TextureLoader.loadImage(ClassLoader.getSystemResourceAsStream("resources/textures/BoxmanFaceHappy.png")));
 		
 	}
 	

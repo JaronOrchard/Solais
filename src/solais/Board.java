@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import doodads.Doodad;
+import entities.Entity;
 
 
 
@@ -21,9 +22,13 @@ public class Board {
 	private List<Doodad> doodads;
 	public List<Doodad> getDoodads() { return doodads; }
 	
+	private List<Entity> entities;
+	public List<Entity> getEntities() { return entities; }
+	
 	public Board() {
 		cells = new Cell[NUM_CELLS][NUM_CELLS];
 		doodads = new ArrayList<Doodad>();
+		entities = new ArrayList<Entity>();
 	}
 	
 	/**
@@ -39,6 +44,9 @@ public class Board {
 		for (Doodad d : doodads) {
 			d.draw();
 		}
+		for (Entity e : entities) {
+			e.draw();
+		}
 	}
 	
 	/**
@@ -52,6 +60,12 @@ public class Board {
 			if (d.getCellX() == cellX && d.getCellZ() == cellZ) {
 				d.activate();
 			}
+		}
+	}
+	
+	public void updateEntities(long time) {
+		for (Entity entity : entities) {
+			entity.update(time);
 		}
 	}
 	

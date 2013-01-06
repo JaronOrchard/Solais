@@ -42,14 +42,17 @@ public class Solais {
 			glLoadIdentity();
 			player.orientCamera();
 			
-			// Draw scene:
-			board.draw(player);
+			// Get input and move the player:
 			getKeyboardAndMouseInput();
-			
 			if (player.moved()) {
 				player.setPosition(board.attemptMovement(player.getPosition(), player.getDesiredPosition()));
 			}
 			
+			// Update all entities:
+			board.updateEntities(getTime());
+			
+			// Draw new scene:
+			board.draw(player);
 			
 			updateFPS(); // Uncomment to update the title bar with the FPS
 			Display.update();
@@ -61,9 +64,15 @@ public class Solais {
 	
 	int fps;
 	long lastFPS;
+	
+	/**
+	 * Get the time in milliseconds
+	 * @return The system time in milliseconds
+	 */
 	public long getTime() {
 		return (Sys.getTime() * 1000) / Sys.getTimerResolution();
 	}
+	
 	public void updateFPS() {
 	    if (getTime() - lastFPS > 1000) {
 	        Display.setTitle(SOLAIS_WINDOW_TITLE + " | FPS: " + fps); 
@@ -109,7 +118,7 @@ public class Solais {
 		glDepthFunc(GL_LEQUAL);
 		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 		
-		// Fog, found from http://content.gpwiki.org/index.php/OpenGL:Tutorials:Tutorial_Framework:Light_and_Fog:
+		// Fog:
 		glEnable(GL_FOG);
 		FloatBuffer fogColor = BufferUtils.createFloatBuffer(4);
         fogColor.put(0.0f).put(0.0f).put(0.0f).put(1.0f).flip();
