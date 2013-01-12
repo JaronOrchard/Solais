@@ -63,9 +63,9 @@ public class Board {
 		}
 	}
 	
-	public void updateEntities(long time) {
+	public void updateEntities(Player player, long time) {
 		for (Entity entity : entities) {
-			entity.update(time);
+			entity.update(player, time);
 		}
 	}
 	

@@ -1,6 +1,7 @@
 package entities;
 
 import solais.Coordinate;
+import solais.Player;
 
 public abstract class Entity {
 	
@@ -17,9 +18,10 @@ public abstract class Entity {
 	
 	/**
 	 * Causes the Entity to act, be it moving or interacting with the Player or something else.
+	 * @param player The player
 	 * @param time The current system time in milliseconds
 	 */
-	public abstract void update(long time);
+	public abstract void update(Player player, long time);
 	
 	/**
 	 * Draw the Entity on the screen.

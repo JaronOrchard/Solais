@@ -2,18 +2,26 @@ package entities;
 
 import static org.lwjgl.opengl.GL11.*;
 import solais.Coordinate;
+import solais.Player;
+import solais.Solais;
 import solais.Textures;
 
 public class Boxman extends Entity {
 	
+	private final long startTime;
+	private final long secondsToSwivel = 3 * 1000; // 3 sec
+	private final double degreesToSwivel = 30;
+	
 	public Boxman(Coordinate position, float angle) {
 		super(position, angle);
 		health = 5;
+		startTime = Solais.getTime();
 	}
 	
 	@Override
-	public void update(long time) {
-		angle = (angle += 1) % 360;
+	public void update(Player player, long currentTime) {
+		angle = (float) Math.toDegrees(Math.atan2(position.getX() - player.getPosition().getX() + 0.5, position.getZ() - player.getPosition().getZ() + 0.5));
+		angle += (Math.sin(((double)((currentTime - startTime) % secondsToSwivel) / (double)secondsToSwivel) * Math.PI * 2) * degreesToSwivel);
 	}
 	
 	@Override
@@ -30,7 +38,7 @@ public class Boxman extends Entity {
 			glEnable(GL_TEXTURE_2D);
 			glPushMatrix();
 				glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-				glBindTexture(GL_TEXTURE_2D, Textures.BOXMAN_FACE_MAD);
+				glBindTexture(GL_TEXTURE_2D, Textures.BOXMAN_FACE_HAPPY);
 				glBegin(GL_QUADS);
 					glTexCoord2d(0,0); 
 					glVertex3f(0.8f, 0.8f, 0.2f);
@@ -58,8 +66,6 @@ public class Boxman extends Entity {
 					glVertex3f(0.8f, 0.2f, 0.2f);
 				glEnd();
 			glPopMatrix();
-			
-			// Draw sides:
 			glPushMatrix();
 				glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 				glTranslatef(1f, 0f, 0f);

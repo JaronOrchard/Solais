@@ -49,7 +49,7 @@ public class Solais {
 			}
 			
 			// Update all entities:
-			board.updateEntities(getTime());
+			board.updateEntities(player, getTime());
 			
 			// Draw new scene:
 			board.draw(player);
@@ -73,7 +73,7 @@ public class Solais {
 	 * Get the time in milliseconds
 	 * @return The system time in milliseconds
 	 */
-	public long getTime() {
+	public static long getTime() {
 		return (Sys.getTime() * 1000) / Sys.getTimerResolution();
 	}
 	

@@ -27,7 +27,7 @@ public class BoardBuilder {
 		
 		for (int x = 5; x < board.getNumCells(); x += 5) {
 			for (int z = 5; z < board.getNumCells(); z += 5) {
-				board.getCells()[x][z] = new Cell(Textures.RED_BRICK, Textures.ORANGE_BRICK, Textures.HALLWAYTEST, Textures.BLUE_BRICK, Textures.NONE, Textures.NONE, true);
+				board.getCells()[x][z] = new Cell(Textures.RED_BRICK, Textures.RED_BRICK, Textures.BLUE_BRICK, Textures.BLUE_BRICK, Textures.NONE, Textures.NONE, true);
 			}
 		}
 		
