@@ -1,6 +1,8 @@
 package entities;
 
 import static org.lwjgl.opengl.GL11.*;
+import bullets.EnemyBullet;
+import solais.Board;
 import solais.Coordinate;
 import solais.Player;
 import solais.Solais;
@@ -12,15 +14,15 @@ public class Boxman extends Entity {
 	private final long secondsToSwivel = 3 * 1000; // 3 sec
 	private final double degreesToSwivel = 30;
 	
-	public Boxman(Coordinate position, float angle) {
-		super(position, angle);
+	public Boxman(Board parentBoard, Coordinate position, float angle) {
+		super(parentBoard, position, angle);
 		health = 5;
 		startTime = Solais.getTime();
 	}
 	
 	@Override
 	public void update(Player player, long currentTime) {
-		angle = (float) Math.toDegrees(Math.atan2(position.getX() - player.getPosition().getX() + 0.5, position.getZ() - player.getPosition().getZ() + 0.5));
+		angle = (float) -Math.toDegrees(Math.atan2(position.getX() - player.getPosition().getX() + 0.5, position.getZ() - player.getPosition().getZ() + 0.5));
 		angle += (Math.sin(((double)((currentTime - startTime) % secondsToSwivel) / (double)secondsToSwivel) * Math.PI * 2) * degreesToSwivel);
 	}
 	
@@ -30,7 +32,7 @@ public class Boxman extends Entity {
 			glTranslatef(position.getX(), 0f, position.getZ()); // Move it to its final location
 			
 			glTranslatef(0.5f, 0f, 0.5f); // Move it back
-			glRotatef(angle, 0f, 1f, 0f); // Rotate it
+			glRotatef(-angle, 0f, 1f, 0f); // Rotate it
 			glTranslatef(-0.5f, 0f, -0.5f); // Move so its center is on its origin for rotation purposes
 			
 			// Draw front/back:
@@ -102,6 +104,14 @@ public class Boxman extends Entity {
 			
 		glPopMatrix();
 		
+	}
+
+	@Override
+	public void shot() {
+		health--;
+		if (health > 0) {
+			parentBoard.addBullet(new EnemyBullet(new Coordinate(position.getX() + 0.5f, 0.5f, position.getZ() + 0.5f), angle));
+		}
 	}
 	
 }

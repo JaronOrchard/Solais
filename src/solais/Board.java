@@ -1,7 +1,12 @@
 package solais;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import bullets.Bullet;
+import bullets.EnemyBullet;
+import bullets.PlayerBullet;
 
 import doodads.Doodad;
 import entities.Entity;
@@ -25,10 +30,20 @@ public class Board {
 	private List<Entity> entities;
 	public List<Entity> getEntities() { return entities; }
 	
+	private List<Bullet> activeBullets;
+	//public List<Bullet> getBullets() { return activeBullets; }
+	
+	private List<Bullet> queuedBullets;
+	public void addBullet(Bullet bullet) { queuedBullets.add(bullet); }
+	
+	
+	
 	public Board() {
 		cells = new Cell[NUM_CELLS][NUM_CELLS];
 		doodads = new ArrayList<Doodad>();
 		entities = new ArrayList<Entity>();
+		activeBullets = new ArrayList<Bullet>();
+		queuedBullets = new ArrayList<Bullet>();
 	}
 	
 	/**
@@ -47,6 +62,15 @@ public class Board {
 		for (Entity e : entities) {
 			e.draw();
 		}
+		for (Bullet b : activeBullets) {
+			b.draw();
+		}
+	}
+	
+	public void update(Player player) {
+		updateBullets();
+		updateEntities(player, Solais.getTime());
+		addQueuedBullets();
 	}
 	
 	/**
@@ -64,8 +88,50 @@ public class Board {
 	}
 	
 	public void updateEntities(Player player, long time) {
-		for (Entity entity : entities) {
-			entity.update(player, time);
+		Iterator<Entity> iter = entities.iterator();
+		while (iter.hasNext()) {
+			Entity entity = iter.next();
+			if (entity.getHealth() <= 0) {
+				iter.remove();
+			} else {
+				entity.update(player, time);
+			}
+		}
+	}
+	
+	private void updateBullets() {
+		Iterator<Bullet> iter = activeBullets.iterator();
+		while (iter.hasNext()) {
+			Bullet bullet = iter.next();
+		    bullet.updatePosition();
+		    // Destroy the bullet if it hits a wall, an entity, or goes out of bounds:
+		    if (bullet instanceof PlayerBullet) {
+			    for (Entity entity : entities) {
+			    	if (CoordinateUtils.CoordinatesIntersect(bullet.getPosition(), entity.getPosition(), 0.5f)) {
+			    		entity.shot();
+			    		iter.remove();
+			    	}
+			    }
+		    } else if (bullet instanceof EnemyBullet) {
+		    	
+		    	
+		    	// If the bullet and the player's positions intersect, do damage to the player and kill the bullet.
+		    	// ** We don't know the Player's position!
+		    	
+		    	
+		    }
+		    int cellX = (int) bullet.getPosition().getX();
+			int cellZ = (int) bullet.getPosition().getZ();
+			if (cellX < 0 || cellX >= NUM_CELLS || cellZ < 0 || cellZ >= NUM_CELLS || cells[cellX][cellZ].getSolid()) {
+				iter.remove();
+			}
+		}
+	}
+	
+	private void addQueuedBullets() {
+		if (!queuedBullets.isEmpty()) {
+			activeBullets.addAll(queuedBullets);
+			queuedBullets.clear();
 		}
 	}
 	

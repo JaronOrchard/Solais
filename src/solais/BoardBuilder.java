@@ -32,7 +32,7 @@ public class BoardBuilder {
 		}
 		
 		
-		board.getEntities().add(new Boxman(new Coordinate(8, 0, 8), 0));
+		board.getEntities().add(new Boxman(board, new Coordinate(8, 0, 8), 0));
 		
 		return board;
 	}

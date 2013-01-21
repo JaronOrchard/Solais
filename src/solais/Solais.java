@@ -10,6 +10,8 @@ import org.lwjgl.opengl.DisplayMode;
 import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.util.glu.GLU;
 
+import bullets.PlayerBullet;
+
 public class Solais {
 	
 	private static final int WINDOW_WIDTH = 900;
@@ -48,8 +50,8 @@ public class Solais {
 				player.setPosition(board.attemptMovement(player.getPosition(), player.getDesiredPosition()));
 			}
 			
-			// Update all entities:
-			board.updateEntities(player, getTime());
+			// Update the board, including all entities and bullets:
+			board.update(player);
 			
 			// Draw new scene:
 			board.draw(player);
@@ -101,6 +103,9 @@ public class Solais {
 			if (Keyboard.getEventKeyState()) { // Key was pressed (not released)
 				if (Keyboard.getEventKey() == Keyboard.KEY_SPACE) {
 					board.activateDoodad(player);
+				}
+				if (Keyboard.getEventKey() == Keyboard.KEY_E) {
+					board.addBullet(new PlayerBullet(new Coordinate(player.getPosition()), player.getAngle()));
 				}
 			}
 		}
