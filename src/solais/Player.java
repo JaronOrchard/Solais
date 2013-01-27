@@ -3,9 +3,6 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class Player {
 	
-	private static final float PI = 3.1415926535f;
-	private static final float DEG_TO_RAD = PI / 180;
-	
 	private static final float DEFAULT_MOVEMENT_SPEED = 0.05f;
 	private static final float DEFAULT_TURNING_SPEED = 3.5f;
 	
@@ -53,39 +50,40 @@ public class Player {
 	}
 	
 	/**
-	 * <b>Call this before drawing anything!</b>
-	 * <br/><br/>
-	 * Rotates and translates everything that is drawn to view it from the player's perspective.
-	 * <br/><br/>
-	 * Taken in part from http://www.lloydgoodall.com/tutorials/first-person-camera-control-with-lwjgl/
+	 * <p>Call this before drawing anything!</p>
+	 * 
+	 * <p>Rotates and translates everything that is drawn to view it from the player's perspective.</p>
+	 * 
+	 * <p>Taken in part from http://www.lloydgoodall.com/tutorials/first-person-camera-control-with-lwjgl/</p>
 	 */
 	public void orientCamera() {
 		//float pitch = 0f; // Unused currently
 		//glRotatef(pitch, 1.0f, 0.0f, 0.0f); // Rotate the pitch around the X-axis
-		glRotatef(this.angle, 0.0f, 1.0f, 0.0f); // Rotate the yaw around the Y-axis
+		glRotatef(-this.angle, 0.0f, 1.0f, 0.0f); // Rotate the yaw around the Y-axis
+		glRotatef(90, 0.0f, 1.0f, 0.0f); // Because OpenGL?
 		glTranslatef(-this.position.getX(), -this.position.getY(), -this.position.getZ()); // Translate to the player's location
 	}
 	
 	public void turnLeft() {
-		angle -= turningSpeed;
+		angle += turningSpeed;
 		while (angle < 0f) { angle += 360f; }
 	}
 	
 	public void turnRight() {
-		angle += turningSpeed;
+		angle -= turningSpeed;
 		while (angle >= 360f) { angle -= 360f; }
 	}
 	
 	public void moveForward() { moveInDirection(angle); }
 	public void moveBackward() { moveInDirection(angle + 180f); }
-	public void strafeLeft() { moveInDirection(angle + 270f); }	
-	public void strafeRight() { moveInDirection(angle + 90f); }
+	public void strafeLeft() { moveInDirection(angle + 90f); }	
+	public void strafeRight() { moveInDirection(angle - 90f); }
 	
 	private void moveInDirection(float angle) {
-		float xChange = (float) (Math.cos((angle - 90f) * DEG_TO_RAD) * movementSpeed);
-		float zChange = (float) (Math.sin((angle - 90f) * DEG_TO_RAD) * movementSpeed);
+		float xChange = (float)(Math.cos((Math.toRadians(angle))) * movementSpeed);
+		float zChange = (float)(Math.sin((Math.toRadians(angle))) * movementSpeed);
 		desiredPosition.incrementX(xChange);
-		desiredPosition.incrementZ(zChange);
+		desiredPosition.incrementZ(-zChange); // Negative because Solais's origin is in the top-left where down is positive, but in trig down is negative.
 	}
 		
 }

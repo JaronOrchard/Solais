@@ -1,5 +1,7 @@
 package entities;
 
+import static org.lwjgl.opengl.GL11.*;
+
 import solais.Board;
 import solais.Coordinate;
 import solais.Player;
@@ -38,5 +40,20 @@ public abstract class Entity {
 	 * React to being shot by a hostile bullet.
 	 */
 	public abstract void shot();
+	
+	/**
+	 * Draw additional components that appear when the game is in debug mode.
+	 */
+	public void drawDebugMode() {
+		glBegin(GL_LINES);
+			glColor3f(1, 0, 0);
+			glVertex3f(position.getX(), 0.4f, position.getZ());
+			glVertex3f(position.getX() + (float)Math.cos(Math.toRadians(angle)), 0.4f, position.getZ() - (float)Math.sin(Math.toRadians(angle)));
+			
+			glColor3f(0, 1, 0);
+			glVertex3f(position.getX(), 0, position.getZ());
+			glVertex3f(position.getX(), 1, position.getZ());
+		glEnd();
+	}
 	
 }

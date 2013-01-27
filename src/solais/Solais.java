@@ -19,6 +19,8 @@ public class Solais {
 	private static final String SOLAIS_WINDOW_TITLE = "Solais (Alpha version)";
 	private static final int maxFPS = 100;
 	
+	private boolean debugModeEnabled = false;
+	
 	private Board board;
 	private Player player;
 	
@@ -55,6 +57,7 @@ public class Solais {
 			
 			// Draw new scene:
 			board.draw(player);
+			if (debugModeEnabled) { board.drawDebugMode(); }
 			
 			// Draw HUD:
 			initializeOpenGLFor2D();
@@ -106,6 +109,9 @@ public class Solais {
 				}
 				if (Keyboard.getEventKey() == Keyboard.KEY_E) {
 					board.addBullet(new PlayerBullet(new Coordinate(player.getPosition()), player.getAngle()));
+				}
+				if (Keyboard.getEventKey() == 41) { // Backtick (`) key
+					toggleDebugMode();
 				}
 			}
 		}
@@ -163,13 +169,18 @@ public class Solais {
 	}
 	
 	private void initializeGame() {
-		player = new Player("Player", new Coordinate(5.5f, 0.5f, 3.5f), 90);
+		player = new Player("Player", new Coordinate(5.5f, 0.5f, 3.5f), 0);
 		board = BoardBuilder.buildLevel01();
 	}
 	
 	public static void main(String[] argv) {
 		Solais solais = new Solais();
 		solais.start();
+	}
+	
+	private void toggleDebugMode() {
+		debugModeEnabled = !debugModeEnabled;
+		System.out.println("Debug mode is now " + (debugModeEnabled ? "ON" : "OFF"));
 	}
 	
 }

@@ -15,9 +15,6 @@ import entities.Entity;
 
 public class Board {
 	
-	private static final float PI = 3.1415926535f;
-	private static final float DEG_TO_RAD = PI / 180f;
-	
 	private static final int NUM_CELLS = 64; // Number of cells on a side of the board
 	public int getNumCells() { return NUM_CELLS; }
 		
@@ -31,8 +28,6 @@ public class Board {
 	public List<Entity> getEntities() { return entities; }
 	
 	private List<Bullet> activeBullets;
-	//public List<Bullet> getBullets() { return activeBullets; }
-	
 	private List<Bullet> queuedBullets;
 	public void addBullet(Bullet bullet) { queuedBullets.add(bullet); }
 	
@@ -67,6 +62,12 @@ public class Board {
 		}
 	}
 	
+	public void drawDebugMode() {
+		for (Entity e : entities) {
+			e.drawDebugMode();
+		}
+	}
+	
 	public void update(Player player) {
 		updateBullets();
 		updateEntities(player, Solais.getTime());
@@ -78,8 +79,8 @@ public class Board {
 	 * @param player The player (used to get the player's location)
 	 */
 	public void activateDoodad(Player player) {
-		int cellX = (int)(Math.cos((player.getAngle() - 90f) * DEG_TO_RAD) + player.getPosition().getX());
-		int cellZ = (int)(Math.sin((player.getAngle() - 90f) * DEG_TO_RAD) + player.getPosition().getZ());
+		int cellX = (int)(Math.cos((Math.toRadians(player.getAngle()))) + player.getPosition().getX());
+		int cellZ = (int)(-Math.sin((Math.toRadians(player.getAngle()))) + player.getPosition().getZ());
 		for (Doodad d : doodads) {
 			if (d.getCellX() == cellX && d.getCellZ() == cellZ) {
 				d.activate();
