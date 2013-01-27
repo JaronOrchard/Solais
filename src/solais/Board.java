@@ -69,7 +69,7 @@ public class Board {
 	}
 	
 	public void update(Player player) {
-		updateBullets();
+		updateBullets(player);
 		updateEntities(player, Solais.getTime());
 		addQueuedBullets();
 	}
@@ -100,7 +100,7 @@ public class Board {
 		}
 	}
 	
-	private void updateBullets() {
+	private void updateBullets(Player player) {
 		Iterator<Bullet> iter = activeBullets.iterator();
 		while (iter.hasNext()) {
 			Bullet bullet = iter.next();
@@ -108,18 +108,16 @@ public class Board {
 		    // Destroy the bullet if it hits a wall, an entity, or goes out of bounds:
 		    if (bullet instanceof PlayerBullet) {
 			    for (Entity entity : entities) {
-			    	if (CoordinateUtils.CoordinatesIntersect(bullet.getPosition(), entity.getPosition(), 0.5f)) {
+			    	if (CoordinateUtils.coordinatesIntersect(bullet.getPosition(), entity.getPosition(), 0.5f)) {
 			    		entity.shot();
 			    		iter.remove();
 			    	}
 			    }
 		    } else if (bullet instanceof EnemyBullet) {
-		    	
-		    	
-		    	// If the bullet and the player's positions intersect, do damage to the player and kill the bullet.
-		    	// ** We don't know the Player's position!
-		    	
-		    	
+		    	if (CoordinateUtils.coordinatesIntersect(bullet.getPosition(), player.getPosition(), 0.5f)) {
+		    		player.shot();
+		    		iter.remove();
+		    	}
 		    }
 		    int cellX = (int) bullet.getPosition().getX();
 			int cellZ = (int) bullet.getPosition().getZ();

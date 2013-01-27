@@ -85,5 +85,12 @@ public class Player {
 		desiredPosition.incrementX(xChange);
 		desiredPosition.incrementZ(-zChange); // Negative because Solais's origin is in the top-left where down is positive, but in trig down is negative.
 	}
+	
+	/**
+	 * React to being shot by a hostile bullet.
+	 */
+	public void shot() {
+		currentHealth -= 5;
+	}
 		
 }
